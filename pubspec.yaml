@@ -32,11 +32,13 @@ dependencies:
     sdk: flutter
 
   audioplayers: ^6.1.0
-  audioplayers_android_exo: 0.1.2
+  audioplayers_android_exo: ^0.1.2
   audioplayers_aurora:
     git:
       url: https://gitlab.com/omprussia/flutter/flutter-community-plugins/audioplayers_aurora.git
       ref: aurora-0.5.3
+  audio_service: ^0.18.17
+  audio_service_mpris: ^0.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

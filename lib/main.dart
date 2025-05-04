@@ -1,11 +1,25 @@
+import 'package:audio_service/audio_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:radiola/radiola_audio_handler.dart';
 
 import '/home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+late AudioHandler radiolaAudioHandler;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  radiolaAudioHandler = await AudioService.init(
+    builder: () => RadiolaAudioHandler(),
+    config: const AudioServiceConfig(
+      androidNotificationChannelId: 'ru.vovkamorkovka.radiola.channel.audio',
+      androidNotificationChannelName: 'Online Radio',
+      androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
+    ),
+  );
   AudioLogger.logLevel = AudioLogLevel.info;
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
